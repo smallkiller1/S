@@ -129,7 +129,7 @@ impl RebalWithdrawSolArgs {
         let lst_state_list_acc = fetched.pop().unwrap().unwrap();
         let pool_acc = fetched.pop().unwrap().unwrap();
 
-        let mut spool = SPool::from_init_accounts(
+        let mut spool = SPool::from_init_accounts_no_pp(
             program_id,
             SPoolInitAccounts {
                 lst_state_list: lst_state_list_acc,

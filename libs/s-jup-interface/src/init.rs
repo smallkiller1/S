@@ -121,4 +121,28 @@ impl<S: ReadonlyAccountData, L: ReadonlyAccountData> SPool<S, L> {
         res.pricing_prog = Some(pricing_prog);
         Ok(res)
     }
+
+    /// temporary hax to workaround flatslab program.
+    /// Pls stop using this repo and go to
+    /// https://github.com/igneous-labs/inf-1.5
+    /// instead
+    pub fn from_init_accounts_no_pp(
+        program_id: Pubkey,
+        SPoolInitAccounts {
+            lst_state_list: lst_state_list_acc,
+            pool_state: pool_state_acc,
+        }: SPoolInitAccounts<S, L>,
+        lst_list: &[SanctumLst],
+        shared_current_epoch: &Arc<AtomicU64>,
+    ) -> anyhow::Result<Self> {
+        let mut res = Self::from_lst_state_list_account(
+            program_id,
+            lst_state_list_acc,
+            lst_list,
+            shared_current_epoch,
+        )?;
+        res.pool_state_account = Some(pool_state_acc);
+        res.pricing_prog = None;
+        Ok(res)
+    }
 }
