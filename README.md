@@ -1,3 +1,9 @@
+# ARCHIVE NOTICE
+
+Development of the INF program is now at https://github.com/igneous-labs/inf-1.5
+
+This repo continues to be opened for now for temporary hacks and hotfixes.
+
 # Sanctum S
 
 ## Overview
